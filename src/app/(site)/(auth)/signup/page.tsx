@@ -1,4 +1,3 @@
-import SignUp from "@/components/Auth/SignUp";
 import Breadcrumb from "@/components/Common/Breadcrumb";
 import { Metadata } from "next";
 
@@ -12,7 +11,7 @@ const SignupPage = () => {
     <>
       <Breadcrumb pageName="Sign Up Page" />
       <div className="max-w-2xl mx-auto">
-        <SignUp />
+        <SignupPage />
       </div>
     </>
   );
