@@ -24,7 +24,7 @@ const Faq = () => {
               Here are some of the most common questions I get.
             </p>
           </div>
-          <Accordion type="single" className="space-y-4">
+          <Accordion className="space-y-4">
             {faqData.map((item, index) => (
               <AccordionItem
                 key={index}
@@ -48,4 +48,3 @@ const Faq = () => {
 };
 
 export default Faq;
-

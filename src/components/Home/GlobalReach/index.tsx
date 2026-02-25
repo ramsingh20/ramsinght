@@ -21,7 +21,6 @@ const GlobalReach = () => {
               >
                 <CardContent className="p-0 flex flex-col items-center gap-4">
                   <h3 ref={ref} className="text-3xl font-black text-primary">
-                    {item.prefix && item.prefix}
                     {item.count == 247 ? (
                       "24/7"
                     ) : inView ? (
