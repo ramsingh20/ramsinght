@@ -4,7 +4,7 @@ import { Stars } from "@react-three/drei";
 import { useRef } from "react";
 
 function AnimatedStars() {
-  const starsRef = useRef<any>();
+  const starsRef = useRef<any>(null);
 
   useFrame(() => {
     if (starsRef.current) {
