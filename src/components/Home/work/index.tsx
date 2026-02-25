@@ -27,7 +27,7 @@ const projects = [
     description: 'A personal portfolio website to showcase my skills and projects.',
     image: '/images/portfolio/localhost_5173_.png',
     technologies: ['React.js', 'Node.js', 'JWT', 'Tailwind'],
-    liveUrl: 'http://localhost:5173/',
+    liveUrl: '#',
     sourceUrl: '#',
   },
 ]
