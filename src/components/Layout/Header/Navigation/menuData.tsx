@@ -1,9 +1,10 @@
 import { HeaderItem } from "@/types/menu";
 
 export const headerData: HeaderItem[] = [
-  { label: "Features", href: "/#work" },
-  { label: "Benefits", href: "/#development" },
-  { label: "Services", href: "/#portfolio" },
-  { label: "Why Crypgo", href: "/#upgrade" },
+  { label: "Home", href: "/#" },
+  { label: "About", href: "/#about" },
+  { label: "Projects", href: "/#work" },
+  { label: "Journey", href: "/#development" },
   { label: "FAQs", href: "/#faq" },
+  { label: "Contact", href: "/#contact" },
 ];

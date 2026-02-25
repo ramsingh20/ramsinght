@@ -1,138 +1,62 @@
 'use client'
 import Image from 'next/image'
-import { timelineData } from '@/app/api/data'
-import { motion, useInView } from 'framer-motion'
-import { useRef } from 'react'
+import { journeyData } from '@/app/api/data'
+import { motion } from 'framer-motion'
+
+const TimelineItem = ({ item, index }: { item: any; index: number }) => {
+  const isOdd = index % 2 !== 0;
+
+  const cardVariants = {
+    hidden: { opacity: 0, x: isOdd ? 100 : -100 },
+    visible: { opacity: 1, x: 0 },
+  };
+
+  return (
+    <motion.div
+      variants={cardVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: 0.2 }}
+      className={`relative mb-8 flex w-full items-center ${isOdd ? 'justify-start' : 'justify-end'
+        }`}
+    >
+      <div className={`w-1/2 ${isOdd ? 'pr-8 text-left' : 'pl-8 text-right'}`}>
+        <div className="rounded-lg bg-white/10 p-6 shadow-lg backdrop-blur-lg border border-white/20">
+          <div className='flex items-center gap-4'>
+            <div className="bg-primary/15 p-3 rounded-full">
+              <Image src={item.icon} alt={item.title} width={32} height={32} />
+            </div>
+            <div>
+              <h4 className="text-xl font-semibold text-white">{item.title}</h4>
+              <p className="text-gray-300">{item.text}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform">
+        <div className="h-4 w-4 rounded-full border-2 border-primary bg-gray-800"></div>
+      </div>
+    </motion.div>
+  );
+};
+
 
 const TimeLine = () => {
-  const ref = useRef(null)
-  const inView = useInView(ref)
-
-  const TopAnimation = {
-    initial: { y: '-100%', opacity: 0 },
-    animate: inView ? { y: 0, opacity: 1 } : { y: '-100%', opacity: 0 },
-    transition: { duration: 0.6, delay: 0.4 },
-  }
   return (
-    <section className='md:pt-40 pt-9' id='development'>
-      <div className='container lg:px-16 px-4'>
-        <div className='text-center'>
-          <motion.div
-            whileInView={{ y: 0, opacity: 1 }}
-            initial={{ y: '-100%', opacity: 0 }}
-            transition={{ duration: 0.6 }}>
-            <div className='flex flex-col gap-4'>
-              <p className='text-white font-medium'>
-                We deliver <span className='text-primary'>best solution</span>
-              </p>
-              <h2 className='text-white sm:text-5xl text-3xl font-medium lg:w-80% mx-auto mb-20'>
-                One application with multiple options to give you freedom of buying & selling
-              </h2>
-            </div>
-          </motion.div>
-          <motion.div
-            whileInView={{ scale: 1, opacity: 1 }}
-            initial={{ scale: 0.8, opacity: 0 }}
-            transition={{ duration: 0.6 }}>
-            <div className='md:block hidden relative'>
-              <div>
-                <Image
-                  src='/images/timeline/img-timeline.png'
-                  alt='image'
-                  width={1220}
-                  height={1000}
-                  className='w-80% mx-auto'
-                />
-              </div>
-              <div className='absolute lg::top-40 top-36 lg:left-0 -left-20 w-72 flex items-center gap-6'>
-                <div className='text-right'>
-                  <h3 className='text-muted text-2xl mb-3'>Planning</h3>
-                  <p className='text-lg text-muted/60'>
-                    Map the crypto projects scope with framer template
-                  </p>
-                </div>
-                <div className='bg-primary/15 backdrop-blur-xs px-6 py-2 h-fit rounded-full'>
-                  <Image
-                    src='/images/solution/solution-icon-1.svg'
-                    alt='Planning'
-                    width={44}
-                    height={44}
-                    className='w-16 h-16 '
-                  />
-                </div>
-              </div>
-              <div className='absolute lg:top-40 top-36 lg:right-0 -right-20 w-72 flex items-center gap-6'>
-                <div className='bg-primary/15 backdrop-blur-xs p-6 h-fit rounded-full'>
-                  <Image
-                    src='/images/solution/solution-icon-2.svg'
-                    alt='Refinement'
-                    width={44}
-                    height={44}
-                  />
-                </div>
-                <div className='text-left'>
-                  <h3 className='text-muted text-2xl mb-3'>Refinement</h3>
-                  <p className='text-lg text-muted/60'>
-                  Refine & improve your crypto landing page
-                  </p>
-                </div>
-              </div>
-              <div className='absolute lg:bottom-48 bottom-36 lg:left-0 -left-20 w-72 flex items-center gap-6'>
-                <div className='text-right'>
-                  <h3 className='text-muted text-2xl mb-3'>Prototype</h3>
-                  <p className='text-lg text-muted/60'>
-                  Build crypto website test for your product
-                  </p>
-                </div>
-                <div className='bg-primary/15 backdrop-blur-xs px-6 py-2 h-fit rounded-full'>
-                  <Image
-                    src='/images/solution/solution-icon-3.svg'
-                    alt='Prototype'
-                    width={44}
-                    height={44}
-                    className='w-16 h-16 '
-                  />
-                </div>
-              </div>
-              <div className='absolute lg:bottom-48 bottom-36 lg:right-0 -right-20 w-72 flex items-center gap-6'>
-                <div className='bg-primary/15 backdrop-blur-xs px-6 py-2 h-fit rounded-full'>
-                  <Image
-                    src='/images/solution/solution-icon-4.svg'
-                    alt='Scale and support'
-                    width={44}
-                    height={44}
-                    className='w-16 h-16'
-                  />
-                </div>
-                <div className='text-left'>
-                  <h3 className='text-muted text-nowrap text-2xl mb-3'>
-                    Support
-                  </h3>
-                  <p className='text-lg text-muted/60'>
-                  Deploy product live and ensure expert support
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className='grid sm:grid-cols-2 gap-8 md:hidden'>
-              {timelineData.map((item, index) => (
-                <div key={index} className='flex items-center gap-6'>
-                  <div className='bg-primary/15 p-6 rounded-full'>
-                    <Image
-                      src={item.icon}
-                      alt={item.title}
-                      width={44}
-                      height={44}
-                    />
-                  </div>
-                  <div className='text-start'>
-                    <h4 className='text-2xl text-muted mb-2'>{item.title}</h4>
-                    <p className='text-muted/60 text-lg'>{item.text}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </motion.div>
+    <section className="py-20" id="development">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-20">
+          <h2 className="text-5xl font-medium text-white">My Journey</h2>
+          <p className="mt-4 text-lg text-gray-300">
+            My Educational and Professional Journey
+          </p>
+        </div>
+        <div className="relative">
+          <div className="absolute left-1/2 top-0 h-full w-0.5 -translate-x-1/2 transform bg-white/20"></div>
+          {journeyData.map((item, index) => (
+            <TimelineItem key={index} item={item} index={index} />
+          ))}
         </div>
       </div>
     </section>
