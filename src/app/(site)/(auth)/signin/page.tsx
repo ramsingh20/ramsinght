@@ -1,4 +1,4 @@
-import Signin from "@/components/Auth/SignIn";
+// import Signin from "@/components/Auth/SignIn";
 import Breadcrumb from "@/components/Common/Breadcrumb";
 import { Metadata } from "next";
 
@@ -12,7 +12,7 @@ const SigninPage = () => {
     <>
       <Breadcrumb pageName="Sign In Page" />
       <div className="max-w-2xl mx-auto">
-        <Signin />
+        {/* <Signin /> */}
       </div>
     </>
   );
