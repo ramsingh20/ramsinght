@@ -1,7 +1,7 @@
 "use client";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Stars } from "@react-three/drei";
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 
 function AnimatedStars() {
   const starsRef = useRef<any>(null);
@@ -19,6 +19,17 @@ function AnimatedStars() {
 }
 
 export default function ThreeBackground() {
+  const [isMounted, setIsMounted] = useState(false);
+
+  // This ensures the component ONLY renders on the browser, never the server
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return null; // Vercel will see this during build and quickly move on
+  }
+
   return (
     <div className="w-full h-auto rounded-lg overflow-hidden fixed inset-0 -z-1">
       <Canvas>

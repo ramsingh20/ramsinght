@@ -5,7 +5,10 @@ import Footer from '@/components/Layout/Footer'
 import { ThemeProvider } from 'next-themes'
 import ScrollToTop from '@/components/ScrollToTop'
 import Aoscompo from '@/utils/aos'
+
+// 1. Revert to a normal static import
 import ThreeBackground from '@/components/Common/ThreeBackground'
+
 const font = DM_Sans({ subsets: ['latin'] })
 
 export default function RootLayout({
@@ -20,7 +23,9 @@ export default function RootLayout({
           attribute='class'
           enableSystem={true}
           defaultTheme='system'>
-            <ThreeBackground />
+          
+          <ThreeBackground />
+          
           <Aoscompo>
             <Header />
             {children}
