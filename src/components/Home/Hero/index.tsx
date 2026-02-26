@@ -3,7 +3,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import ThreeBackground from "@/components/Common/ThreeBackground";
 
 const Hero = () => {
   const leftAnimation = {
@@ -25,7 +24,6 @@ const Hero = () => {
       className="relative py-2 pt-30 overflow-hidden z-1"
       id="main-banner"
     >
-      <ThreeBackground />
       <div className="container">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 h-full items-center">
           <motion.div
