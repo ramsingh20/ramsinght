@@ -7,7 +7,7 @@ const Scene = dynamic(() => import("./ThreeScene"), { ssr: false });
 
 export default function ThreeBackground() {
   return (
-    <div className="w-full h-auto rounded-lg overflow-hidden fixed inset-0 -z-1">
+    <div className="w-screen h-screen rounded-lg fixed inset-0 z-0 overflow-hidden">
       {/* 2. Render the safely imported client-only scene */}
       <Scene />
     </div>

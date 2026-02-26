@@ -11,7 +11,7 @@ function AnimatedStars() {
   useFrame(() => {
     if (starsRef.current) {
       starsRef.current.rotation.x += 0.0005;
-      starsRef.current.rotation.y += 0.0001;
+      starsRef.current.rotation.y += 0.00010;
       starsRef.current.rotation.x -= 0.00015;
       starsRef.current.rotation.y -= 0.0005;
     }

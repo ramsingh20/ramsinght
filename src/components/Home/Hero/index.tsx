@@ -21,7 +21,7 @@ const Hero = () => {
 
   return (
     <section
-      className="relative py-2 pt-30 overflow-hidden z-1"
+      className="relative py-2 pt-30 overflow-hidden -z-1"
       id="main-banner"
     >
       <div className="container">
