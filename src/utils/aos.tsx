@@ -1,15 +1,18 @@
 'use client'
 import { useEffect } from "react";
-import AOS from "aos"
 import 'aos/dist/aos.css';
 
 const Aoscompo = ({children}:any) => {
     useEffect(() => {
-        AOS.init({
-            duration: 800,
-            once: false,
-        })
+        // Dynamically import AOS only when the component mounts in the browser
+        import("aos").then((AOS) => {
+            AOS.default.init({
+                duration: 800,
+                once: false,
+            });
+        });
     }, [])
+    
   return (
     <div>
       {children}
@@ -17,4 +20,4 @@ const Aoscompo = ({children}:any) => {
   )
 }
 
-export default Aoscompo
+export default Aoscompo;
