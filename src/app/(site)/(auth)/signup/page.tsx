@@ -11,7 +11,7 @@ const SignupPage = () => {
     <>
       <Breadcrumb pageName="Sign Up Page" />
       <div className="max-w-2xl mx-auto">
-        <SignupPage />
+        {/* Render your signup form component here instead of recursively calling SignupPage */}
       </div>
     </>
   );
