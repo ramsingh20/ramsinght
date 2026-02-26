@@ -4,7 +4,8 @@ import 'aos/dist/aos.css';
 
 const Aoscompo = ({children}:any) => {
     useEffect(() => {
-        // Dynamically import AOS only when the component mounts in the browser
+        // We dynamically import AOS *inside* the useEffect. 
+        // This hides the library completely from the Next.js build server!
         import("aos").then((AOS) => {
             AOS.default.init({
                 duration: 800,
